@@ -25,4 +25,27 @@ export class Blockchain {
     private incNumofBlocks() {
         (this.numOfBlocks as number)++;
     }
+
+    /**
+     * validateChain
+     */
+    public validateChain(): boolean {
+
+        for (let i = 1; i < this.chain.length; i++) {
+            const currentBlock = this.chain[i];
+            const previousBlock = this.chain[i - 1];
+
+            if (currentBlock.hash !== currentBlock.generateBlockHash()) {
+                return false;
+            }
+
+            if (currentBlock.previousHash !== previousBlock.hash) {
+                return false;
+            }
+
+        }
+
+        return true;
+
+    }
 }
