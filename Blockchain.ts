@@ -16,7 +16,8 @@ export class Blockchain {
     }
 
     public addBlock(block: Block) {
-        (block.previousHash as string) = this.chain[this.chain.length - 1].hash
+        (block.previousHash as string) = this.chain[this.chain.length - 1].hash;
+        (block.hash as string) = block.generateBlockHash(); // here we re-generating the hash again because we added a previousHash property in block
         this.chain.push(block);
         this.incNumofBlocks()
     }

@@ -18,7 +18,7 @@ export class Block {
     /**
      * Generate Block hash
      */
-    private generateBlockHash(): string {
+    public generateBlockHash(): string {
         return SHA256(JSON.stringify({ data: this.data, number: this.number, timeStamp: this.timeStamp, previousHash: this.previousHash })).toString()
     }
 }
